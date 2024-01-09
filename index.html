@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    
+  </style>
+</head>
+<body>
+    <div class="container">
+
+        <div id="todoList">
+    <h2>Todo List</h2>
+    <ul id="todos"></ul>
+    <input type="text" id="todoInput" placeholder="Add a new todo">
+    <div class="btn">
+                <button onclick="addTodo()">Add Todo</button>
+
+    </div>
+</div>
+</div>
+
+  <script>
+    // Function to create a new todo item
+    const createTodo = (text) => ({
+      id: Date.now(),
+      text,
+      completed: false,
+    });
+
+    // Function to render todos
+    const renderTodos = () => {
+      const todosContainer = document.getElementById('todos');
+      todosContainer.innerHTML = '';
+
+      todos.forEach(todo => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <input type="checkbox" ${todo.completed ? 'checked' : ''} onclick="toggleTodo(${todo.id})">
+          <span>${todo.text}</span>
+          <button onclick="removeTodo(${todo.id})">Remove</button>
+        `;
+        todosContainer.appendChild(li);
+      });
+    };
+
+    // Function to add a new todo
+    const addTodo = () => {
+      const todoInput = document.getElementById('todoInput');
+      const text = todoInput.value.trim();
+
+      if (text !== '') {
+        todos.push(createTodo(text));
+        todoInput.value = '';
+        renderTodos();
+      }
+    };
+
+    // Function to toggle the completion status of a todo
+    const toggleTodo = (id) => {
+      const todo = todos.find(todo => todo.id === id);
+      if (todo) {
+        todo.completed = !todo.completed;
+        renderTodos();
+      }
+    };
+
+    // Function to remove a todo
+    const removeTodo = (id) => {
+      todos = todos.filter(todo => todo.id !== id);
+      renderTodos();
+    };
+
+    // Initial todos array
+    let todos = [];
+
+    // Initial rendering of todos
+    renderTodos();
+  </script>
+</body>
+</html>
