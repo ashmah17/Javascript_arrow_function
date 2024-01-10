@@ -5,24 +5,32 @@ body {
     align-items: center;
     justify-content: center;
   }
+  h2{
+    text-align: center;
+  }
   #todoList {
-    max-width: 400px;
+    /* max-width: 400px; */
+    width: 90%;
     margin: 0 auto;
+    padding: 1rem;
+
   }
   #todoList ul {
     list-style: none;
     padding: 0;
+    width: 100%;
+   
   }
   #todoList li {
     margin-bottom: 10px;
     /* background-color: aqua; */
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; */
   }
   .container{
     /* background-color: yellow; */
-    width: 50%;
+    width: 80%;
     height: 50%;
     padding-right: 2rem;
     border-radius: 1rem;
